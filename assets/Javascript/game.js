@@ -26,12 +26,24 @@ document.onkeyup = function(event) {
         for (var i = 0; i < currentWord.length; i++) {
             if (currentWord[i] === userGuess){
                 hyphens[i] = userGuess;
-            };
+            }
+
+            else{
+                // lives -1;
+                guesses.push(userGuess);
+            }
         };
 
-        //if user guesses incorrectly, this counts down remainging guesses and pushes incorrect guess to the guesses array
-        // if (currentWord.indexOf(userGuess) !== -1) {
-        //     lives--;
+        //if user guesses incorrectly, this counts down remaining guesses and pushes incorrect guess to the guesses array
+        //problem here**
+        // for (var i = 0; i < currentWord.length; i++) {
+        //     if (currentWord[i] !== userGuess) {
+        //         lives - "1";
+        //     }
+        // }
+
+        // if (userGuess !== currentWord.indexOf()) {
+        //     lives --;
         //     guesses.push(userGuess);
         // };
 
@@ -44,8 +56,9 @@ document.onkeyup = function(event) {
         answer = hyphens.join (" ");
 
         //sets up win scenario
+        //vvv used 'hyphens.join("")' instead of 'answer' so that the space in hyphens wouldn't affect the equals outcome vvv
         if(currentWord === hyphens.join("")) {
-            // currentWord = wordChoices[Math.floor(Math.random() * wordChoices.length)];
+            // currentWord = wordChoices[Math.floor(Math.random() * wordChoices.length)];  <== problem here
             wins ++;
             lives = 10;
             guesses.length = 0;
@@ -53,7 +66,7 @@ document.onkeyup = function(event) {
     
         //sets up loss scenario
         if(lives === 0) {
-            // currentWord = wordChoices[Math.floor(Math.random() * wordChoices.length)];
+            // currentWord = wordChoices[Math.floor(Math.random() * wordChoices.length)];  <== problem here
             guesses.length = 0;
             lives = 10;
         };
